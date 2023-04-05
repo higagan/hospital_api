@@ -47,7 +47,7 @@ class SignUp(models.Model):
     password = models.CharField(max_length=100)
     type = models.CharField(max_length=100, choices=(("Doctor","Doctor"),("Hospital","Hospital")))
     def __str__(self):
-        return username
+        return self.username
 
 class UserRegistration(models.Model):
     registration_id =  models.AutoField(primary_key=True)
@@ -63,10 +63,9 @@ class UserRegistration(models.Model):
                            ("BDS",'BDS'),
                            ("Nursing",'Nursing')
                            ))
-    added_date=models.DateTimeField(auto_now=True)  
+ 
 
-    user_id=models.ForeignKey(SignUp, on_delete=models.CASCADE)
-    # registration_id=models.ForeignKey(SignUp, on_delete=models.CASCADE)
+    user=models.ForeignKey(SignUp, on_delete=models.CASCADE)
   
 
 
